@@ -30,7 +30,10 @@ jobs:
 
       - name: Build JupyterLite site
         run: |
-          jupyter lite build --output-dir dist
+          jupyter lite build \
+            --output-dir dist \
+            --pyodide
+
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
