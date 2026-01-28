@@ -25,11 +25,13 @@ jobs:
 
       - name: Install JupyterLite
         run: |
-          pip install jupyterlite
+          pip install jupyterlite[pyodide]
+
 
       - name: Build JupyterLite site
         run: |
-          jupyter lite build --output-dir dist
+          jupyter lite build --contents . --output-dir dist
+
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
