@@ -32,7 +32,7 @@ jobs:
         run: |
           jupyter lite build \
             --output-dir dist \
-            --apps notebook
+            --apps notebook \
             --base-url /student-tests/
 
       - name: Upload Pages artifact
