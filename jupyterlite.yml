@@ -1,0 +1,8 @@
+jupyterlite_config:
+  federated_extensions:
+    - "@jupyterlite/pyodide-kernel-extension"
+
+  kernels:
+    - name: python
+      display_name: Python (Pyodide)
+      language: python
