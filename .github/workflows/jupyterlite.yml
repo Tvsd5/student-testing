@@ -32,7 +32,8 @@ jobs:
         run: |
           jupyter lite build \
             --output-dir dist \
-            --pyodide
+            --apps notebook
+
 
 
       - name: Upload Pages artifact
