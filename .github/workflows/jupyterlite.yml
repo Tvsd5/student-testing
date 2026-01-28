@@ -33,7 +33,7 @@ jobs:
           jupyter lite build \
             --output-dir dist \
             --apps notebook \
-            --base-url /student-tests/
+            --base-url /student-testing/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
