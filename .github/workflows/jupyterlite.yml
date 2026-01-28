@@ -2,7 +2,7 @@ name: Build and Deploy JupyterLite
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -30,16 +30,12 @@ jobs:
 
       - name: Build JupyterLite site
         run: |
-          jupyter lite build \
-            --output-dir dist \
-            --apps notebook \
-            --base-url /student-testing/
+          jupyter lite build --output-dir dist
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
-
+          path: dist
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
