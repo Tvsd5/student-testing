@@ -1,7 +1,7 @@
 jupyterlite:
   apps:
-    - notebook
     - lab
-  kernels:
-    - name: python
-      type: pyodide
+    - notebook
+
+contents:
+  - .
