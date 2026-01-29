@@ -2,39 +2,33 @@ name: Build and Deploy JupyterLite
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install JupyterLite
+      - name: Install JupyterLite with Pyodide
         run: |
-          pip install jupyterlite[pyodide] jupyter-server
+          pip install \
+            jupyterlite \
+            jupyterlite-pyodide-kernel
 
       - name: Build JupyterLite site
         run: |
-          jupyter lite build --contents . --output-dir dist
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
+          jupyter lite build --output-dir dist
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist
