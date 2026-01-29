@@ -2,3 +2,5 @@ jupyterlite:
   apps:
     - notebook
     - lab
+  contents:
+    - content
