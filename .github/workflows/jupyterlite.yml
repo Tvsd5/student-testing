@@ -23,15 +23,6 @@ jobs:
             jupyterlite \
             jupyterlite-pyodide-kernel
 
-      - name: Build JupyterLite site
-        run: |
-          jupyter lite build \
-            --config jupyterlite.yml \
-            --output-dir dist
-
-
-
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
